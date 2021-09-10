@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import numpy as np
 import pandas as pd
@@ -12,13 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 
-# In[2]:
-
-
 app = flask.Flask(__name__, template_folder='Templates')
-
-
-# In[3]:
 
 
 # read the data
@@ -28,11 +17,9 @@ mollywood = pd.read_csv("Mollywood_movies.csv")
 tollywood = pd.read_csv("Tollywood_movies.csv")
 sandalwood = pd.read_csv("Sandalwood_movies.csv")
 
-
-# In[4]:
-new_list = [bollywood,kollywood,mollywood,tollywood,sandalwood]
-all_movies = pd.concat(new_list,ignore_index = True,sort = False)
-df = all_movies.reset_index()
+#new_list = [bollywood,kollywood,mollywood,tollywood,sandalwood]
+#all_movies = pd.concat(new_list,ignore_index = True,sort = False)
+df = tollywood.reset_index()
 indices = pd.Series(df.index, index=df['Title'])
 all_titles = [df['Title'][i] for i in range(len(df['Title']))]
 df = df.fillna("")
@@ -46,9 +33,6 @@ tfidf_matrix = tfidf.fit_transform(df['Comb'])
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 
-# In[5]:
-
-
 def recommend_movies(movie_name):
     idx = indices[movie_name]
     sim_scores = list(enumerate(cosine_sim[idx]))
@@ -59,14 +43,7 @@ def recommend_movies(movie_name):
     return movies
 
 
-# In[9]:
-
-
 @app.route('/', methods=['GET', 'POST'])
-
-
-# In[ ]:
-
 
 def main():
     if flask.request.method == 'GET':
@@ -93,16 +70,5 @@ def main():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
 
 
