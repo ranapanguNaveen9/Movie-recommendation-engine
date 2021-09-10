@@ -1,0 +1,58 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Movie-recommendation-engine</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('288744.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main"; column-gap: 40px>
+    <center><h1 style="color:black;font-size:250%;">Movie Recommendation Engine</h1>
+    <div class='descrption'>
+      <p style="color:white;font-size: 150%;">A content based movie recommender system, built with Flask and deployed using Heroku.</p>
+    </div>
+    <form action="{{ url_for('main') }}" method="POST">
+        <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: white;">
+        <input type="text" name="movie_name" class="movie form-control" id="autoComplete" autocomplete="on" placeholder="Enter the Movie Name" style="background-color:#ffffff60;border-color:#ffffff60;width: 60%;color: #181818; border-radius: 8px;" required="required" />
+      <br>
+      <br>
+      </div>
+    
+      <div class="form-group" style="text-align: center;">
+      <button class="button" style="background-color:#ffffff60;border-color:#ffffff60;">Recommend</button>
+      <br>
+      </div>
+    </form>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+  <!-- Footer -->
+    <footer class ='footer'>
+            <center><p style="color:red;font-size: 150%;"class='footer-description'>With love NaveenRko</p>
+        </div>
+          
+  </div>
+</body>
+</html>
