@@ -56,7 +56,10 @@ def main():
         return(flask.render_template('no.html'))
     else:
         result = recommend_movies(m_name)
-        return flask.render_template('yes.html', movie_names=result,search_name=m_name)
+        title = []
+        for i in range(len(result)):
+            title.append(result.iloc[i][0])
+        return flask.render_template('yes.html', movie_names=title,search_name=m_name)
 
 if __name__ == '__main__':
     app.run(debug=True)
