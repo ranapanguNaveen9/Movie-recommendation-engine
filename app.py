@@ -48,7 +48,8 @@ def recommend_movies(movie_name):
 
 def main():
     if flask.request.method == 'GET':
-        return(flask.render_template('index.html'))
+        titles = df['Title']
+        return(flask.render_template('index.html',titles = titles))
 
     if flask.request.method == 'POST':
         m_name = flask.request.form['movie_name']
