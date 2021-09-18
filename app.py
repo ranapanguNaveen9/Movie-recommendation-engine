@@ -11,14 +11,7 @@ app = flask.Flask(__name__, template_folder='Templates')
 
 
 # read the data
-#bollywood = pd.read_csv("Bollywood_movies.csv")
-#kollywood = pd.read_csv("Kollywood_movies.csv")
-#mollywood = pd.read_csv("Mollywood_movies.csv")
 tollywood = pd.read_csv("Tollywood_movies.csv")
-#sandalwood = pd.read_csv("Sandalwood_movies.csv")
-#new_list = [bollywood,kollywood,mollywood,tollywood,sandalwood]
-#all_movies = pd.concat(new_list,ignore_index = True,sort = False)
-#all_movies = pd.read_csv("movies.csv")
 
 df = tollywood.reset_index()
 indices = pd.Series(df.index, index=df['Title'])
