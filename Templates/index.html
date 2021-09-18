@@ -22,7 +22,7 @@
     </div>
     <form action="{{ url_for('main') }}" method="POST">
         <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: white;">
-        <input type="text" name="movie_name" class="movie form-control" id="autoComplete" autocomplete="on" placeholder="Enter the Movie Name" style="background-color:#ffffff60;border-color:#ffffff60;width: 60%;color: #181818; border-radius: 8px;" required="required" />
+        <input type="text" name="movie_name" class="movie form-control" id="tags" autocomplete="on" placeholder="Enter the Movie Name" style="background-color:#ffffff60;border-color:#ffffff60;width: 60%;color: #181818; border-radius: 8px;" required="required" />
       <br>
       <br>
       </div>
@@ -46,6 +46,16 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+  $( function() {
+    var availableTags = [
+        {% for title in titles %}
+            "{{title}}",
+        {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
 </script>
 
   <!-- Footer -->
